@@ -40,7 +40,7 @@ import pt.ist.socialsoftware.edition.shared.exception.LdoDDuplicateAcronymExcept
 import pt.ist.socialsoftware.edition.shared.exception.LdoDDuplicateNameException;
 import pt.ist.socialsoftware.edition.shared.exception.LdoDEditVirtualEditionException;
 import pt.ist.socialsoftware.edition.validator.VirtualEditionValidator;
-import pt.ist.socialsoftware.edition.visitors.PlainHtmlWriter4OneInter;
+import pt.ist.socialsoftware.edition.visitors.JDomHtmlWriter4OneInter;
 
 @Controller
 @SessionAttributes({ "ldoDSession" })
@@ -326,7 +326,9 @@ public class VirtualEditionController {
 			List<FragInter> inters = new ArrayList<FragInter>();
 			inters.add(addInter);
 
-			PlainHtmlWriter4OneInter writer = new PlainHtmlWriter4OneInter(addInter.getLastUsed());
+			// PlainHtmlWriter4OneInter writer = new
+			// PlainHtmlWriter4OneInter(addInter.getLastUsed());
+			JDomHtmlWriter4OneInter writer = new JDomHtmlWriter4OneInter(addInter.getLastUsed());
 			writer.write(false);
 
 			model.addAttribute("ldoD", LdoD.getInstance());
